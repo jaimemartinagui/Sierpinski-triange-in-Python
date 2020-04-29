@@ -21,8 +21,7 @@ def recursive_sierpinski(size, n, draw=None, first_call=True):
         # Set the initial position in order to center the triangle
         total_size = size * 2 ** (n - 1)
         h = np.sqrt(total_size ** 2 - (total_size/2) ** 2)
-        init_pos = (- total_size/2, -h/2)
-        set_pos(draw, init_pos)
+        set_pos(draw, (-total_size/2, -h/2))
     
     if n == 1:
         draw_triangle(draw, size)
@@ -85,3 +84,5 @@ def iterative_sierpinski(n, size_factor=50):
                 draw_inverted_triangle(draw, new_size)
             
             pos = pos_aux
+
+recursive_sierpinski(10, 6)
