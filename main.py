@@ -10,30 +10,46 @@ import numpy as np
 from functions import draw_triangle, draw_inverted_triangle, set_pos, get_mid_point
 
 
-def recursive_sierpinski(draw, size, n):
+def recursive_sierpinski(size, n, draw=None, first_call=True):
     """Function that generates a sierpinski triangle through recursion"""
+    
+    if first_call:
+        draw = turtle.Turtle()
+        draw.hideturtle()
+        draw.speed(0)
+        turtle.Screen().setup(1000, 1000)
+        # Set the initial position in order to center the triangle
+        total_size = size * 2 ** (n - 1)
+        h = np.sqrt(total_size ** 2 - (total_size/2) ** 2)
+        init_pos = (- total_size/2, -h/2)
+        set_pos(draw, init_pos)
     
     if n == 1:
         draw_triangle(draw, size)
     else:
-        recursive_sierpinski(draw, size, n-1)
+        recursive_sierpinski(size, n-1, draw, first_call=False)
         draw.rt(120)
         draw.fd(size * 2 ** (n - 2))
-        recursive_sierpinski(draw, size, n-1)
+        recursive_sierpinski(size, n-1, draw, first_call=False)
         draw.lt(120)
         draw.fd(size * 2 ** (n - 2))
-        recursive_sierpinski(draw, size, n-1)
+        recursive_sierpinski(size, n-1, draw, first_call=False)
         draw.fd(size * 2 ** (n - 2))
 
 
-def iterative_sierpinski(draw, n, size_factor=100):
+def iterative_sierpinski(n, size_factor=50):
     """Function that generates a sierpinski triangle through iteration"""
+    
+    draw = turtle.Turtle()
+    draw.hideturtle()
+    draw.speed(0)
+    turtle.Screen().setup(1000, 1000)
     
     # Set the size of the external triangle and calculate its height
     size = size_factor * 2 ** (n - 1)
     h = np.sqrt(size ** 2 - (size/2) ** 2)
     
-    # Set initial position
+    # Set the initial position in order to center the triangle
     init_pos = (- size/2, -h/2)
     set_pos(draw, init_pos)
     
