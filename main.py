@@ -70,7 +70,7 @@ def iterative_sierpinski(n, size_factor=50):
             for level in levels:
                 if str(level) in pos:
                     den = pos['0'][0].denominator * 2
-                    pos_aux[str(level)] = sorted([x - Fraction(1, den) for x in pos[str(level)]] + 
+                    pos_aux[str(level)] = sorted([x - Fraction(1, den) for x in pos[str(level)]] + \
                                                  [x + Fraction(1, den) for x in pos[str(level)]])
                 else:
                     key = list(pos_aux.keys())[-1]
