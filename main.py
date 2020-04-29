@@ -71,10 +71,11 @@ def iterative_sierpinski(n, size_factor=50):
                 if str(level) in pos:
                     den = pos['0'][0].denominator * 2
                     pos_aux[str(level)] = sorted([x - Fraction(1, den) for x in pos[str(level)]] + 
-                                                [x + Fraction(1, den) for x in pos[str(level)]])
+                                                 [x + Fraction(1, den) for x in pos[str(level)]])
                 else:
                     key = list(pos_aux.keys())[-1]
-                    pos_aux[str(level)] = [get_mid_point(pos_aux[key][i], pos_aux[key][i+1]) for i in range(0, len(pos_aux[key]), 2)]
+                    pos_aux[str(level)] = [get_mid_point(pos_aux[key][i], pos_aux[key][i+1]) \
+                                           for i in range(0, len(pos_aux[key]), 2)]
             # Transform the dictionary to a list of points
             points = [(init_pos[0] + size * x, init_pos[1] + h * int(y)) if y == '0' else \
                       (init_pos[0] + size * x, init_pos[1] + h * Fraction(int(y.split('/')[0]), int(y.split('/')[1]))) \
@@ -84,5 +85,3 @@ def iterative_sierpinski(n, size_factor=50):
                 draw_inverted_triangle(draw, new_size)
             
             pos = pos_aux
-
-recursive_sierpinski(10, 6)
