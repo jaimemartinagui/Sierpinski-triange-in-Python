@@ -46,10 +46,10 @@ def iterative_sierpinski(n, size_factor=50):
     
     # Set the size of the external triangle and calculate its height
     size = size_factor * 2 ** (n - 1)
-    h = np.sqrt(size ** 2 - (size/2) ** 2)
+    h = np.sqrt(size ** 2 - (size / 2) ** 2)
     
     # Set the initial position in order to center the triangle
-    init_pos = (- size/2, -h/2)
+    init_pos = (-size/2, -h/2)
     set_pos(draw, init_pos)
     
     for n in range(n+1):

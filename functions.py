@@ -24,4 +24,4 @@ def set_pos(draw, pos):
 
 
 def get_mid_point(p1, p2):
-    return p1 + (p2 - p1)/2
+    return p1 + (p2 - p1) / 2
