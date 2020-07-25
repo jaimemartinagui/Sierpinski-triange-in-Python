@@ -16,7 +16,6 @@ class SierpinskiTriangle():
     def __init__(self):
         self.aux_funcs = AuxiliarFunctions()
     
-    
     def recursive_sierpinski(self, size, n, draw=None, first_call=True):
         """Function that generates a sierpinski triangle through recursion"""
         
@@ -41,7 +40,6 @@ class SierpinskiTriangle():
             draw.fd(size * 2 ** (n - 2))
             self.recursive_sierpinski(size, n-1, draw, first_call=False)
             draw.fd(size * 2 ** (n - 2))
-    
     
     def iterative_sierpinski(self, n, size_factor=50):
         """Function that generates a sierpinski triangle through iteration"""
